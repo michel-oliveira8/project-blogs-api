@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { CREATED } = require('../schemas/validations');
+const { CREATED, OK } = require('../schemas/validations');
 
 const usersServices = require('../services/usersServices');
 
@@ -16,6 +16,18 @@ const create = async (req, res) => {
     res.status(CREATED).json({ token });
 };
 
+const login = async (req, res) => {
+    const userLogin = req.body;
+    const usersLogin = await usersServices.login(userLogin);
+    if (usersLogin.message) {
+        return res.status(usersLogin.code)
+        .json({ message: usersLogin.message }); 
+}
+    const token = jwt.sign({ data: userLogin }, 'JWT_kEY', jwtConfig);
+    res.status(OK).json({ token });
+};
+
 module.exports = {
     create,
+    login,
 };

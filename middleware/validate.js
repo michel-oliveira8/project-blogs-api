@@ -24,6 +24,24 @@ const validateUser = (req, res, next) => {
     next();
 };
 
+const validateUserLogin = (req, res, next) => {
+    const { email, password } = req.body;
+    const validationsEmailLogin = validationsSchema.validateEmailLogin(email);
+    if (validationsEmailLogin.message) {
+        return res.status(validationsEmailLogin.code).json({
+            message: validationsEmailLogin.message });
+    }
+
+    const validationsPasswordLogin = validationsSchema.validatePasswordLogin(password);
+    if (validationsPasswordLogin.message) {
+        return res.status(validationsPasswordLogin.code).json({
+            message: validationsPasswordLogin.message });
+    }
+
+    next();
+};
+
 module.exports = {
     validateUser,
+    validateUserLogin,
 };

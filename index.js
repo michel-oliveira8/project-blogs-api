@@ -5,9 +5,11 @@ const app = express();
 app.use(bodyParser.json());
 
 const ValidationsMiddlware = require('./middleware/validate');
-const { create } = require('./controllers/usersController');
+const { create, login } = require('./controllers/usersController');
 
 app.post('/user', ValidationsMiddlware.validateUser, create);
+
+app.post('/login', ValidationsMiddlware.validateUserLogin, login);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
 

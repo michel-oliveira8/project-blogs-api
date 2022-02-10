@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const { CONFLICT, userExist } = require('../schemas/validations');
+const { CONFLICT, userExist, BAD_REQUEST, userNotExist } = require('../schemas/validations');
 
 const create = async (user) => {
     const existEmail = await User.findOne({ where: { email: user.email } });
@@ -8,6 +8,17 @@ const create = async (user) => {
     return User.create(user);
 };
 
+const login = async (user) => {
+    const loginEmail = await User.findOne({ where: { email: user.email } });
+    const loginPassword = await User.findOne({ where: { password: user.password } });
+    if (!loginEmail || !loginPassword) {
+        return { code: BAD_REQUEST, message: userNotExist };
+    }
+
+    return {};
+};
+
 module.exports = {
     create,
+    login,
 };
