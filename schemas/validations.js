@@ -3,6 +3,7 @@ const CREATED = 201;
 const BAD_REQUEST = 400;
 const NOT_FOUND = 404;
 const CONFLICT = 409;
+const UNAUTHORIZED = 401;
 
 const displayNameLength = '"displayName" length must be at least 8 characters long';
 const emailInvalid = '"email" must be a valid email';
@@ -13,6 +14,8 @@ const passwordLength = '"password" length must be 6 characters long';
 const passwordRequired = '"password" is required';
 const userExist = 'User already registered';
 const userNotExist = 'Invalid fields';
+const TokenNotFound = 'Token not found';
+const InvalidToken = 'Expired or invalid token';
 
 const validateName = (name) => {
     if (name.length < 8) {
@@ -64,4 +67,7 @@ module.exports = {
     NOT_FOUND,
     BAD_REQUEST,
     userNotExist,
+    UNAUTHORIZED,
+    TokenNotFound,
+    InvalidToken,
 };

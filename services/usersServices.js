@@ -18,7 +18,14 @@ const login = async (user) => {
     return {};
 };
 
+const getAll = async (user) => {
+    const allUsers = await User.findAll(user);
+
+    return allUsers;
+};
+
 module.exports = {
     create,
     login,
+    getAll,
 };

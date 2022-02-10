@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
-const { CREATED, OK } = require('../schemas/validations');
+const {
+     CREATED, OK, UNAUTHORIZED, TokenNotFound, InvalidToken,
+     } = require('../schemas/validations');
 
 const usersServices = require('../services/usersServices');
 
@@ -27,7 +29,24 @@ const login = async (req, res) => {
     res.status(OK).json({ token });
 };
 
+const getAll = async (req, res) => {
+    const token = req.headers.authorization;
+    const userAll = await usersServices.getAll();
+    if (!token) {
+        return res.status(UNAUTHORIZED).json({ message: TokenNotFound });
+      }
+    
+      try {
+        jwt.verify(token, 'JWT_kEY');
+      } catch (_) {
+        return res.status(UNAUTHORIZED).json({ message: InvalidToken });
+      }
+
+    res.status(OK).json(userAll);
+};
+
 module.exports = {
     create,
     login,
+    getAll,
 };
