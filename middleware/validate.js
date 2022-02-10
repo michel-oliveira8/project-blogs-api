@@ -1,0 +1,29 @@
+const validationsSchema = require('../schemas/validations');
+
+const validateUser = (req, res, next) => {
+    const { displayName, email, password } = req.body;
+
+    const validationsName = validationsSchema.validateName(displayName);
+    if (validationsName.message) {
+        return res.status(validationsName.code).json({
+            message: validationsName.message });
+    }
+
+    const validationsEmail = validationsSchema.validateEmail(email);
+    if (validationsEmail.message) {
+        return res.status(validationsEmail.code).json({
+            message: validationsEmail.message });
+    }
+
+    const validationsPassword = validationsSchema.validatePassword(password);
+    if (validationsPassword.message) {
+        return res.status(validationsPassword.code).json({
+            message: validationsPassword.message });
+    }
+
+    next();
+};
+
+module.exports = {
+    validateUser,
+};

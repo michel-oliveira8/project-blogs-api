@@ -8,7 +8,6 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-        field: 'blogpost_id'
       },
       title: {
         allowNull: false,
@@ -23,7 +22,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-        field: 'user_id',
         references: {
           model: 'Users',
           key: 'id',

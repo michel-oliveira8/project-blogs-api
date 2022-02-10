@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
+const ValidationsMiddlware = require('./middleware/validate');
+const { create } = require('./controllers/usersController');
+
+app.post('/user', ValidationsMiddlware.validateUser, create);
+
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
 
 // não remova esse endpoint, e para o avaliador funcionar
