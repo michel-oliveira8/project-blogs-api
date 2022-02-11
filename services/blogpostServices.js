@@ -15,6 +15,17 @@ const create = async (title, categoryIds, content, authorization) => {
     return createPost;
 };
 
+const getAllPost = async () => {
+    const allPosts = await BlogPost.findAll({ include: [
+        { model: User, as: 'user', attributes: { exclude: ['password'] } }, // retira a chave password
+        { model: Category, as: 'categories', through: { attributes: [] } }, // retira os atributos da tabela de junção
+    ],
+});
+
+    return allPosts;
+};
+
 module.exports = {
     create,
+    getAllPost,
 };

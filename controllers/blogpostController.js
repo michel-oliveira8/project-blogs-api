@@ -1,4 +1,4 @@
-const { CREATED } = require('../schemas/validations');
+const { CREATED, OK } = require('../schemas/validations');
 const blogpostService = require('../services/blogpostServices');
 
 const createBlogPost = async (req, res) => {
@@ -10,6 +10,13 @@ const createBlogPost = async (req, res) => {
     return res.status(CREATED).json(getByName);
   };
 
+const getAllPosts = async (_req, res) => {
+    const allPosts = await blogpostService.getAllPost();
+
+    return res.status(OK).json(allPosts);
+};
+
 module.exports = {
     createBlogPost,
+    getAllPosts,
 };
