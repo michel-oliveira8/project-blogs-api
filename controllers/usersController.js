@@ -53,7 +53,7 @@ const getById = async (req, res) => {
     .json({ message: getUserId.message });
   }
   return res.status(OK).json(getUserId);
-}
+};
 
 module.exports = {
     create,
