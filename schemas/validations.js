@@ -16,6 +16,7 @@ const userExist = 'User already registered';
 const userNotExist = 'Invalid fields';
 const TokenNotFound = 'Token not found';
 const InvalidToken = 'Expired or invalid token';
+const idNotExist = 'User does not exist';
 
 const validateName = (name) => {
     if (name.length < 8) {
@@ -70,4 +71,5 @@ module.exports = {
     UNAUTHORIZED,
     TokenNotFound,
     InvalidToken,
+    idNotExist,
 };
