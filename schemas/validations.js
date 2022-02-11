@@ -17,6 +17,7 @@ const userNotExist = 'Invalid fields';
 const TokenNotFound = 'Token not found';
 const InvalidToken = 'Expired or invalid token';
 const idNotExist = 'User does not exist';
+const nameRequired = '"name" is required';
 
 const validateName = (name) => {
     if (name.length < 8) {
@@ -55,12 +56,19 @@ const validatePasswordLogin = (password) => {
     return {};
 };
 
+const validateCategories = (name) => {
+    if (!name) return { code: BAD_REQUEST, message: nameRequired };
+
+    return {};
+};
+
 module.exports = {
     validateName,
     validateEmail,
     validatePassword,
     validateEmailLogin,
     validatePasswordLogin,
+    validateCategories,
     CONFLICT,
     OK,
     CREATED,
@@ -72,4 +80,5 @@ module.exports = {
     TokenNotFound,
     InvalidToken,
     idNotExist,
+    nameRequired,
 };

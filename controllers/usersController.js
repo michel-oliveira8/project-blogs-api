@@ -1,7 +1,11 @@
 const jwt = require('jsonwebtoken');
 const {
-     CREATED, OK, UNAUTHORIZED, TokenNotFound, InvalidToken,
-     } = require('../schemas/validations');
+  CREATED,
+  OK,
+  UNAUTHORIZED,
+  TokenNotFound,
+  InvalidToken,
+} = require('../schemas/validations');
 
 const usersServices = require('../services/usersServices');
 

@@ -41,7 +41,19 @@ const validateUserLogin = (req, res, next) => {
     next();
 };
 
+const validateCategoriesName = (req, res, next) => {
+    const { name } = req.body;
+    const validationsCategories = validationsSchema.validateCategories(name);
+    if (validationsCategories.message) {
+        return res.status(validationsCategories.code).json({
+            message: validationsCategories.message });
+    }
+
+    next();
+};
+
 module.exports = {
     validateUser,
     validateUserLogin,
+    validateCategoriesName,
 };
