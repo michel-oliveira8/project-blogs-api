@@ -52,8 +52,32 @@ const validateCategoriesName = (req, res, next) => {
     next();
 };
 
+const validateBlogPost = (req, res, next) => {
+    const { title, content, categoryIds } = req.body;
+    const validationsTitle = validationsSchema.validatePostTitle(title);
+    if (validationsTitle.message) {
+        return res.status(validationsTitle.code).json({
+            message: validationsTitle.message });
+    }
+
+    const validationsContent = validationsSchema.validatePostContent(content);
+    if (validationsContent.message) {
+        return res.status(validationsContent.code).json({
+            message: validationsContent.message });
+    }
+
+    const validationsCategoryIds = validationsSchema.validatePostCategoryIds(categoryIds);
+    if (validationsCategoryIds.message) {
+        return res.status(validationsCategoryIds.code).json({
+            message: validationsCategoryIds.message });
+    }
+
+    next();
+};
+
 module.exports = {
     validateUser,
     validateUserLogin,
     validateCategoriesName,
+    validateBlogPost,
 };

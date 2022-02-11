@@ -8,9 +8,11 @@ const {
   validateUser,
   validateUserLogin,
   validateCategoriesName,
+  validateBlogPost,
 } = require('./middleware/validate');
 const { create, login, getAll, getById } = require('./controllers/usersController');
 const { createByName, getAllCategories } = require('./controllers/categoriesController');
+const { createBlogPost } = require('./controllers/blogpostController');
 const { authorizationToken } = require('./middleware/auth');
 
 app.post('/user', validateUser, create);
@@ -26,6 +28,8 @@ app.get('/user/:id', getById);
 app.post('/categories', validateCategoriesName, createByName);
 
 app.get('/categories', getAllCategories);
+
+app.post('/post', validateBlogPost, createBlogPost);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
 

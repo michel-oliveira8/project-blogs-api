@@ -18,6 +18,10 @@ const TokenNotFound = 'Token not found';
 const InvalidToken = 'Expired or invalid token';
 const idNotExist = 'User does not exist';
 const nameRequired = '"name" is required';
+const titleRequired = '"title" is required';
+const contentRequired = '"content" is required';
+const categoryIdsRequired = '"categoryIds" is required';
+const categoryIdsNotFound = '"categoryIds" not found';
 
 const validateName = (name) => {
     if (name.length < 8) {
@@ -62,6 +66,24 @@ const validateCategories = (name) => {
     return {};
 };
 
+const validatePostTitle = (title) => {
+    if (!title) return { code: BAD_REQUEST, message: titleRequired };
+
+    return {};
+}; 
+
+const validatePostContent = (content) => {
+    if (!content) return { code: BAD_REQUEST, message: contentRequired };
+
+    return {};
+};
+
+const validatePostCategoryIds = (contegoryIds) => {
+    if (!contegoryIds) return { code: BAD_REQUEST, message: categoryIdsRequired };
+
+    return {};
+};
+
 module.exports = {
     validateName,
     validateEmail,
@@ -69,6 +91,9 @@ module.exports = {
     validateEmailLogin,
     validatePasswordLogin,
     validateCategories,
+    validatePostTitle,
+    validatePostContent,
+    validatePostCategoryIds,
     CONFLICT,
     OK,
     CREATED,
@@ -81,4 +106,5 @@ module.exports = {
     InvalidToken,
     idNotExist,
     nameRequired,
+    categoryIdsNotFound,
 };
