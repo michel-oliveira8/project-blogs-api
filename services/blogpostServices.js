@@ -1,6 +1,10 @@
 const jwt = require('jsonwebtoken');
 const { Category, User, BlogPost } = require('../models');
-const { BAD_REQUEST, categoryIdsNotFound } = require('../schemas/validations');
+const {
+    BAD_REQUEST,
+    categoryIdsNotFound,
+    NOT_FOUND, blogPostInexist,
+  } = require('../schemas/validations');
 
 const create = async (title, categoryIds, content, authorization) => {
     const findCategoryIds = await Category.findOne({ where: { id: categoryIds } });
@@ -25,7 +29,19 @@ const getAllPost = async () => {
     return allPosts;
 };
 
+const getById = async (id) => {
+    const getPostByID = await BlogPost.findByPk(id, { include: [
+        { model: User, as: 'user', attributes: { exclude: ['password'] } }, // retira a chave password
+        { model: Category, as: 'categories', through: { attributes: [] } }, // retira os atributos da tabela de junção
+    ],
+ });
+    if (!getPostByID) return { code: NOT_FOUND, message: blogPostInexist };
+
+    return getPostByID;
+};
+
 module.exports = {
     create,
     getAllPost,
+    getById,
 };

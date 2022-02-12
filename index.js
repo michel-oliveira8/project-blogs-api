@@ -12,7 +12,7 @@ const {
 } = require('./middleware/validate');
 const { create, login, getAll, getById } = require('./controllers/usersController');
 const { createByName, getAllCategories } = require('./controllers/categoriesController');
-const { createBlogPost, getAllPosts } = require('./controllers/blogpostController');
+const { createBlogPost, getAllPosts, getPostsById } = require('./controllers/blogpostController');
 const { authorizationToken } = require('./middleware/auth');
 
 app.post('/user', validateUser, create);
@@ -32,6 +32,8 @@ app.get('/categories', getAllCategories);
 app.post('/post', validateBlogPost, createBlogPost);
 
 app.get('/post', getAllPosts);
+
+app.get('/post/:id', getPostsById);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
 

@@ -22,6 +22,7 @@ const titleRequired = '"title" is required';
 const contentRequired = '"content" is required';
 const categoryIdsRequired = '"categoryIds" is required';
 const categoryIdsNotFound = '"categoryIds" not found';
+const blogPostInexist = 'Post does not exist';
 
 const validateName = (name) => {
     if (name.length < 8) {
@@ -107,4 +108,5 @@ module.exports = {
     idNotExist,
     nameRequired,
     categoryIdsNotFound,
+    blogPostInexist,
 };
