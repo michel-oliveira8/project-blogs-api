@@ -1,3 +1,6 @@
+# Projeto realizado durante curso na Trybe - Módulo de Back-end
+# Data da entrega do projeto 15/02/2022
+
 
 # Habilidades 
 
