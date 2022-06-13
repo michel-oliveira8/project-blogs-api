@@ -1,33 +1,17 @@
 # Projeto realizado durante curso na Trybe - Módulo de Back-end
-# Data da entrega do projeto 15/02/2022
-
-
-# Habilidades 
-
-Nesse projeto, você vai construir um back-end usando `ORM` com o pacote `sequelize` do `npm`, e será capaz de:
- - Criar e associar tabelas usando `models` do `sequelize`
- - Construir endpoints para consumir os models que criar 
- - Fazer um `CRUD` com o `ORM`
-
-## O que deverá ser desenvolvido
-
-Você vai arquiteturar e desenvolver uma API de um CRUD posts de blog (com o Sequelize). Começando pela API, você vai desenvolver alguns endpoints (seguindo os princípios do REST) que estarão conectados ao seu banco de dados.
-
-Primeiro, você irá criar uma tabela para os usuários que desejam se cadastrar na aplicação. Após isso, criará também uma tabela de Categorias para seus Posts e por fim a tabela de Posts será seu foco, guardando todas as informações dos posts realizados na plataforma. Essa é apenas uma recomendação!
-
----
 
 ## Desenvolvimento
 
-Você deve desenvolver uma aplicação em `Node.js` usando o pacote `sequelize` para fazer um `CRUD` de posts.
+Desenvolvido uma API de um CRUD posts de blog (com o Sequelize). Desenvolvido alguns endpoints (seguindo os princípios do REST) conectados ao seu banco de dados.
 
-Para fazer um post é necessário usuário e login, portanto será trabalhada a **relação entre** `user` e `post`. Também será necessário a utilização de categorias para seus posts, assim trabalhando a relação de `posts` para `categorias` e de `categorias` para `posts`.
+Criado uma tabela para os usuários que desejam se cadastrar na aplicação. Após isso, foi criado também uma tabela de Categorias para seus Posts e por fim a tabela de Posts, guardando todas as informações dos posts realizados na plataforma.
+
+---
+
 
 ### Instale as dependências
   * `npm install`
 
-### Execução de testes unitários
+### Execução de testes unitários 
 
-Vamos usar o Jest para executar os testes, use o comando a seguir para executar todos os testes: 
-
-`npm test`
+  * `npm test`
