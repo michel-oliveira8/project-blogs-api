@@ -8,6 +8,8 @@ Criado uma tabela para os usuários que desejam se cadastrar na aplicação. Ap�
 
 ---
 
+### Clone o repositório
+  * `git clone git@github.com:michel-oliveira8/project-blogs-api.git`
 
 ### Instale as dependências
   * `npm install`
