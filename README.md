@@ -17,6 +17,6 @@ Criado uma tabela para os usuários que desejam se cadastrar na aplicação. Ap�
 ### Instale as dependências
   * `npm install`
 
-### Execução de testes unitários 
+### Iniciar servidor na porta 3000 
 
-  * `npm test`
+  * `npm run debug`
