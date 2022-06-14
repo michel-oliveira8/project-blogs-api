@@ -6,7 +6,9 @@ Desenvolvido uma API de um CRUD posts de blog (com o Sequelize). Desenvolvido al
 
 Criado uma tabela para os usuários que desejam se cadastrar na aplicação. Após isso, foi criado também uma tabela de Categorias para seus Posts e por fim a tabela de Posts, guardando todas as informações dos posts realizados na plataforma.
 
----
+## Tecnologias:
+
+ - `JavaScript, NodeJS, MySQL, ORM, Sequelize, API Restfull`
 
 ### Clone o repositório
   * `git clone git@github.com:michel-oliveira8/project-blogs-api.git`
